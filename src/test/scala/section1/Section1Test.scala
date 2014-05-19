@@ -19,11 +19,18 @@ class Section1Test extends FunSuite {
     assert(Section1.max(0, -3) === 0)
   }
 
-  test("A new 'constOne' function using call by name can be called with 'loop'") {
-    //assert(Section1.newConstOne(3, Section1.loop) === 1)
-  }
-
   test("The expression is a mix from methods, values and lazy values") {
     assert(Section1.expr() === "xzyz")
   }
+
+  test("'mangleSomeInts' function using call by name can be called with function 'exception'") {
+    assert(Section1.newConst(2, Section1.exception) === 2)
+    assert(Section1.newConst(4, Section1.exception) === 4)
+  }
+
+  test("A 'someIntFunction' function returns a new function which will multiply its parameter with the first parameter of 'someIntFunction'") {
+    val function = Section1.someIntFunction(3)
+    assert(function(4) === 12)
+  }
+
 }
