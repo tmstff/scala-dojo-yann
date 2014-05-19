@@ -1,4 +1,5 @@
-import scala.collection.mutable.HashSet
+import scala.collection.mutable.{ListBuffer, HashSet}
+
 val input = Seq("Scala is fun", "Scala is even more is", "fun is more", "more is less")
 
 val A = input.flatMap(_.split(" "))
@@ -21,8 +22,8 @@ buffer += ((2, "hallo"))
 println(buffer)
 
 
+val builder = ListBuffer.newBuilder[String]
 
-
-
-
-
+builder ++= List("Hallo", "Welt")
+builder ++= List("lala")
+println(builder.result().toList)

@@ -10,11 +10,37 @@ object Section2 {
 
   def concatenate(input: Array[String]): String = input.foldLeft("")(_ + " " + _).trim
 
+  def concatenate2(input: Array[String]): String = {
+    val builder = mutable.StringBuilder.newBuilder
+    for(str <- input) {
+      builder ++= str ++= " "
+    }
+    builder.toString().trim
+  }
+
   // Seq and List
 
   def loud(input: Seq[String]): Seq[String] = input.map(_.toUpperCase)
 
-  def extractWords(input: Seq[String]): Seq[String] = input.flatMap(f => f.split(" "))
+  def extractWords2(input: Seq[String]): Seq[String] = input.flatMap(f => f.split(" "))
+
+  def extractWords3(input: Seq[String]): Seq[String] = {
+    for {
+      str <- input
+      seq <- str.split(" ")
+    } yield {
+      seq
+    }
+  }
+
+  def extractWords(input: Seq[String]): Seq[String] = {
+    val list = mutable.ListBuffer.newBuilder[String]
+    for(str <- input) {
+      list ++= str.split(" ").toList
+    }
+
+    list.result()
+  }
 
   // Map
 
