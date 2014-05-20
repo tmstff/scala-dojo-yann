@@ -13,12 +13,16 @@ val l = List(1, 2, 3)
 val ll = List(1, 2, 3)
 l == ll
 
+// Tuples
+val tuple = (1, 2, 3)
+println(tuple._1)
+println(tuple._2)
+println(tuple._3)
+
 // defining a immutable value
 val x: String = "hello world"
-
 // short form
 val xx = "hallo other world"
-
 // variables can be reassigned
 var y: String = "This is a var"
 y = "Another value"
