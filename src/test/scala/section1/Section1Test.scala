@@ -23,7 +23,7 @@ class Section1Test extends FunSuite {
     assert(Section1.expr() === "xzyz")
   }
 
-  test("'mangleSomeInts' function using call by name can be called with function 'exception'") {
+  test("'newConst' function using call by name can be called with function 'exception'") {
     assert(Section1.newConst(2, Section1.exception) === 2)
     assert(Section1.newConst(4, Section1.exception) === 4)
   }
