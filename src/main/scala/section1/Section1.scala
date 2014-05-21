@@ -10,11 +10,6 @@ object Section1 {
   def greeting: String = ???
   def max(x: Int, y: Int): Int = ???
 
-  def newConst(x: Int, y: Int) = x
-
-  // Return a function which takes one parameter and multiply it with the 'x' value
-  def someIntFunction(x: Int): (Int => Int) = ???
-
   def expr(): String = {
     var result = ""
     // change if necessary the 'def' with 'val', 'var' or 'lazy val'
@@ -24,4 +19,9 @@ object Section1 {
     z + y + x + z + y + x
     result
   }
+
+  def newConst(x: Int, y: Int) = x
+
+  // Return a function which takes one parameter and multiply it with the 'x' value
+  def someIntFunction(x: Int): (Int => Int) = ???
 }
