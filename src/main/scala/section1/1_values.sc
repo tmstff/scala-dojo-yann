@@ -1,17 +1,24 @@
+// primitive types are also objects
 2.toString
 
+true
+true.toString
+
+// There are no operators. Only methods.
 2 + 2
 2.+(2)
 2 toString()
 3.3
 
-true
-true.toString
-
 // Object equality
 val l = List(1, 2, 3)
 val ll = List(1, 2, 3)
+
+// Equals values
 l == ll
+
+// Equals reference
+l eq ll
 
 // Tuples
 val tuple = (1, "hallo", 3.3)
@@ -38,12 +45,14 @@ println("Making some very important stuff which has to be fast")
 Thread.sleep(1000)
 println(z)
 
+
 // non lazy init on declaration with val
 val zz = {
   println("Initializing some sloooooow zz")
   Thread.sleep(5000)
   42
 }
+
 
 println("Making some very important stuff which has to be fast")
 Thread.sleep(1000)
