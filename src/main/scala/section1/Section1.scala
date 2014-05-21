@@ -27,4 +27,5 @@ object Section1 {
 
   // Return a function which takes one parameter and multiply it with the 'x' value
   def someIntFunction(x: Int): (Int => Int) = ???
+
 }
