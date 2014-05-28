@@ -74,5 +74,3 @@ def tryOfCallbyReference(param: List[Int]) {
   // but since all params are vals there is no reference manipulation!
 }
 
-//http://docs.scala-lang.org/cheatsheets/
-
