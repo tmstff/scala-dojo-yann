@@ -55,29 +55,6 @@ list.map(someFunc).foreach(println)
 
 
 
-// Call by name vs. call by value
-def someCallByValue(x: Int): Int = {
-  println(s"someCallByValue called")
-  x
-}
-def someCallByName(x: => Int): Int = {
-  println(s"someCallByName called ")
-  x
-}
-
-someCallByValue({
-  println("foo")
-  Thread.sleep(2000)
-  42
-})
-
-someCallByName({
-  println("foo")
-  Thread.sleep(2000)
-  42
-})
-
-
 // Some special: Getting the 'function' of the 'method'
 def sum(x: Int, y: Int):Int = x+y
 val a = sum _ //<---- ' _'
