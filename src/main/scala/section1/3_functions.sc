@@ -21,7 +21,7 @@ val g: (Int, Int) => Int   =   (x: Int, y: Int) => x+y
 //       |                       |
 //       The function type       |
 //                               |
-//                               function body
+//                               function
 
 // short form
 val gg = (x: Int, y: Int) => x+y
