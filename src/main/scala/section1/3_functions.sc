@@ -60,9 +60,9 @@ def someCallByValue(x: Int): Int = {
   println(s"someCallByValue called")
   x
 }
-def someCallByName(x: () => Int): Int = {
+def someCallByName(x: => Int): Int = {
   println(s"someCallByName called ")
-  x()
+  x
 }
 
 someCallByValue({
@@ -71,7 +71,7 @@ someCallByValue({
   42
 })
 
-someCallByName(() => {
+someCallByName({
   println("foo")
   Thread.sleep(2000)
   42
