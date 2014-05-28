@@ -65,6 +65,29 @@ recusiveListSumFolder(List(1, 2, 3, 4, 5))
 
 
 //
+// Call by name vs. call by value
+def someCallByValue(x: Int): Int = {
+  println(s"someCallByValue called")
+  x
+}
+def someCallByName(x: => Int): Int = {
+  println(s"someCallByName called ")
+  x
+}
+
+someCallByValue({
+  println("foo")
+  Thread.sleep(2000)
+  42
+})
+
+someCallByName({
+  println("foo")
+  Thread.sleep(2000)
+  42
+})
+
+//
 // Is call by reference and reference manipulation possible?
 var x = List(1, 2, 3)
 def tryOfCallbyReference(param: List[Int]) {
