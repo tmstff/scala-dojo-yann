@@ -1,12 +1,13 @@
 // IF expression
 val x = 12
 
-// Everything is a function
+// The if statement returns ists evaluation. (Functional style!)
 val value =
   if (x == 42) "hallo"
   else "nee"
 
 // While loops
+// Like in java or elsewhere
 var y = 1
 while(y != 4) {
   println(y)
