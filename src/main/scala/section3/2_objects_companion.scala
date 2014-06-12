@@ -1,6 +1,6 @@
 package playground
 
-object ObjectCompanions extends App {
+object  ObjectCompanionsApp extends App {
   val r = new Rocket
 
   Rocket.chooseStrategy(r)
