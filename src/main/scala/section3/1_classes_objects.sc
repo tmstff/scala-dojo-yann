@@ -1,6 +1,5 @@
-// Class with public and private vals and vars
-// Accessing a private val through a field look alike
-// method
+// Class with a private var
+// Accessing it through public methods
 class ChecksumAccumulator {
   private var sum: Int = 0
   def add(b: Byte) { sum += b }
@@ -34,3 +33,17 @@ ref2.y = 10
 ref2.sum
 
 ref2.z
+
+
+// Objects are static elements in scala.
+// Like java classes with static fields and methods
+object ThisIsAStaticObject {
+  var someField = 42
+
+  def printField = println(s"This is the field: ${someField}.")
+}
+
+
+ThisIsAStaticObject.printField
+ThisIsAStaticObject.someField = 123
+ThisIsAStaticObject.printField
