@@ -69,7 +69,7 @@ case class User(name: String, surname: String, age: Int, gender: Gender)
 val max = User("Max", "Mustermann", 34, Male)
 val martina = User("Martina", "Musterfrau", 16, Female)
 def users(user: User) = user match {
-  case User(name, _, _, Male) => println(s"some male named: "+ name)
+  case User(name, "Mustermann", _, Male) => println(s"some male with surname Mustermann named: "+ name)
   case User(name, _, _, Female) => println(s"some female named: "+ name)
   // unreachable code!
   case User(name, _, 34, Male) => println(s"some male named: "+ name)
