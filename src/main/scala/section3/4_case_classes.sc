@@ -30,3 +30,5 @@ user_one.birthday
 // case classes has a builtin hash method
 user_one.hashCode
 user_one.birthday.hashCode
+
+println(user_one)
