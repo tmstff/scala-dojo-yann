@@ -27,13 +27,15 @@ object Section2 {
   // Seq and List
   def loud(input: Seq[String]): Seq[String] = input.map(_.toUpperCase)
 
+  // Functional style
   def extractWords(input: Seq[String]): Seq[String] = {
     input.map(str => str.split(" ")).flatten
     // shorter:
     // input.flatMap(f => f.split(" "))
   }
 
-  def extractWords3(input: Seq[String]): Seq[String] = {
+  // for comprehension
+  def extractWords2(input: Seq[String]): Seq[String] = {
     for {
       str <- input
       seq <- str.split(" ")

@@ -26,7 +26,43 @@ object Section3 {
     def findAll = users.values
   }
 
-  def isMale(id: Int): Boolean = ???
+  // Procedural style
+  def isMale1(id: Int): Boolean = {
+    val mayBeUser = UserRepository.findById(id)
+    if(mayBeUser.isDefined) {
+      val mayBeGender = mayBeUser.get.gender
+      if(mayBeGender.isDefined && mayBeGender.get == "male") {
+        true
+      } else {
+        false
+      }
+    } else {
+      false
+    }
+  }
+
+  // Functional style
+  def isMale2(id: Int): Boolean = UserRepository.findById(id).fold(false)(user =>
+    user.gender.fold(false)(gender => gender == "male")
+  )
+
+  // Pattern match style
+  def isMale3(id: Int): Boolean = UserRepository.findById(id) match {
+    case Some(user) => user.gender match {
+      case Some(gender) if gender == "male" => true
+      case _ => false
+    }
+    case None => false
+  }
+
+  // For comprehensive style
+  def isMale(id: Int): Boolean = (
+    for {
+      user <- UserRepository.findById(id)
+      gender <- user.gender
+      if gender == "male"
+    } yield true
+  ).getOrElse(false)
 
   def isUserAllowed(id: Int): Boolean = ???
 
