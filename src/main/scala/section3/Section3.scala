@@ -42,8 +42,8 @@ object Section3 {
   }
 
   // Functional style
-  def isMale2(id: Int): Boolean = UserRepository.findById(id).fold(false)(user =>
-    user.gender.fold(false)(gender => gender == "male")
+  def isMale2(id: Int): Boolean = UserRepository.findById(id).exists(
+    user => user.gender.exists(gen => gen == "male")
   )
 
   // Pattern match style
