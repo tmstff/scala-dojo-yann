@@ -64,6 +64,44 @@ object Section3 {
     } yield true
   ).getOrElse(false)
 
-  def isUserAllowed(id: Int): Boolean = ???
+  // Pure pattern matching
+  // Very short but may expensive in changes of the constructor args changes.
+  def isUserAllowed4(id: Int): Boolean = UserRepository.findById(id) match {
+    case Some(User(_, _, _, Some(age), Some("female"))) if age >= 18 => true
+    case _ => false
+  }
 
+  // pattern matching
+  // Does not effect object changes of User
+  def isUserAllowed3(id: Int): Boolean = UserRepository.findById(id) match {
+    case Some(user) => user.gender match {
+      case Some("female") => user.age match {
+        case Some(age) if age >= 18 => true
+        case _ => false
+      }
+      case _ => false
+    }
+    case _ => false
+  }
+
+  // Functional style with a closures
+  def isUserAllowed2(id: Int): Boolean = UserRepository.findById(id) exists { user =>
+    user.gender exists { gender =>
+      user.age exists { age =>
+        gender == "female" && age >= 18
+      }
+    }
+  }
+
+  // For comprehensive
+  def isUserAllowed(id: Int): Boolean = (
+      for {
+        user <- UserRepository.findById(id)
+        gender <- user.gender
+        if gender == "female"
+        age <- user.age
+      } yield {
+        age >= 18
+      }
+    ).getOrElse(false)
 }
