@@ -8,6 +8,9 @@ object MonadeExample extends App {
   val x: PartialFunction[Int, String] = { case 1 => "hallo" }
 
   println(x.isDefinedAt(2))
+
+  val y = Some("")
+  println(y.flatMap(str => Some(str)))
 }
 /**
  * We have a class which encapsulate
@@ -16,6 +19,16 @@ object MonadeExample extends App {
  * the class constructor
  */
 class SimpleMonade[T](element: T) {
+
+  /**
+   * flatMap defines a binding method which only changes the internal typ
+   * of our monade.
+   *
+   * @param f
+   * @tparam B
+   * @return
+   */
+  def map[B](f: T => B): SimpleMonade[B] = new SimpleMonade[B](f(element))
 
   /**
    * A Monade defines a binding method, which takes a function
@@ -29,15 +42,5 @@ class SimpleMonade[T](element: T) {
    * We can also insert a default value or an monade inherited object
    * if the element has a specific state. Like Option with its Some and None.
    */
-  def map[B](f: T => SimpleMonade[B]): SimpleMonade[B] = f(element)
-
-  /**
-   * flatMap defines a binding method which only changes the internal typ
-   * of our monade.
-   *
-   * @param f
-   * @tparam B
-   * @return
-   */
-  def flatMap[B](f: T => B): SimpleMonade[B] = new SimpleMonade[B](f(element))
+  def flatMap[B](f: T => SimpleMonade[B]): SimpleMonade[B] = f(element)
 }
