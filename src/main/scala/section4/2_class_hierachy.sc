@@ -4,6 +4,8 @@
 var a: Any = new java.lang.Object
 a = "Hallo"
 a = List(1, 2, 3)
+a = true
+a = 123
 
 // Any, therefore, has two subclasses. AnyRef and AnyVal
 // AnyVal is the superclass for all value classes in scala:
