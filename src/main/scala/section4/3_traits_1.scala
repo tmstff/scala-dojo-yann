@@ -7,7 +7,7 @@ import java.util.Date
 trait Person {
   val name: String
   val gender: String
-  def sayHello = println(s"Hello! I'm $name!")
+  def sayHello() = println(s"Hello! I'm $name!")
 }
 
 // We can "mix in" the trait with 'extends' or 'with'
@@ -34,16 +34,15 @@ class Employee(val name: String, val gender: String) extends Person with Cantina
   val beginOfEmployment = new Date
 }
 
-
 object ## extends App {
   val student = new Student("max", "male")
-  student.sayHello
+  student.sayHello()
 
   val employee = new Employee("Susan", "female")
-  employee.sayHello
+  employee.sayHello()
   employee.deposit(100)
   println(employee.actualBudget)
+
+  // The trait and therefore our object has its own type
+  var user: CantinaUser = employee
 }
-
-
-
