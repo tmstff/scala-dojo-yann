@@ -29,7 +29,7 @@ trait Json {
  * of any json mangling.
  */
 case class Address(street: String, city: String)
-case class Person2(name: String, surname: String, address: Option[Address])
+case class Customer(name: String, surname: String, address: Option[Address])
 
 /**
  * We now can create some instances of the case classes and mixin on the fly the
@@ -37,7 +37,7 @@ case class Person2(name: String, surname: String, address: Option[Address])
  */
 object JsonTraitMixin extends App {
   val address = new Address("Fakestreet", "Bonn") with Json
-  val person = new Person2("Max", "Mustermann", Some(address)) with Json
+  val person = new Customer("Max", "Mustermann", Some(address)) with Json
 
   println(address.toJson)
   println(person.toJson)
@@ -64,14 +64,14 @@ object Address extends CompanionJson[Address] {
   val companionClassType: Class[_ <: Address] = Address("", "").getClass
 }
 
-object Person2 extends CompanionJson[Person2] {
-  val companionClassType: Class[_ <: Person2] = Person2("", "", None).getClass
+object Customer extends CompanionJson[Customer] {
+  val companionClassType: Class[_ <: Customer] = Customer("", "", None).getClass
 }
 
 object JsonTraitCompanionMixin extends App {
   val address = new Address("Fakestreet", "Bonn") with Json
-  val person = new Person2("Max", "Mustermann", Some(address)) with Json
+  val person = new Customer("Max", "Mustermann", Some(address)) with Json
 
   println(Address.fromJson("""{"street":"Fakestreet","city":"Bonn"}"""))
-  println(Person2.fromJson("""{"name":"Max","surname":"Mustermann","address":{"street":"Fakestreet","city":"Bonn"}}"""))
+  println(Customer.fromJson("""{"name":"Max","surname":"Mustermann","address":{"street":"Fakestreet","city":"Bonn"}}"""))
 }
