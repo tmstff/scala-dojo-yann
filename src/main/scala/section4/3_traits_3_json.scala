@@ -72,6 +72,7 @@ object JsonTraitCompanionMixin extends App {
   val address = new Address("Fakestreet", "Bonn") with Json
   val person = new Customer("Max", "Mustermann", Some(address)) with Json
 
+  val customer: Customer = Customer.fromJson("""{"name":"Max","surname":"Mustermann","address":{"street":"Moltkestraße","city":"Bonn"}}""")
+  println("Name: " + customer.name + " " + customer.surname)
   println(Address.fromJson("""{"street":"Fakestreet","city":"Bonn"}"""))
-  println(Customer.fromJson("""{"name":"Max","surname":"Mustermann","address":{"street":"Fakestreet","city":"Bonn"}}"""))
 }
