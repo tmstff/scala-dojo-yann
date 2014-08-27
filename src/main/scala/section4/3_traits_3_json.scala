@@ -52,7 +52,7 @@ object JsonTraitMixin extends App {
  * at method call
  */
 trait CompanionJson[T] extends Json {
-  val companionClassType: Class[T]
+  val companionClassType: Class[_ <: T]
   def fromJson(json: String): T = mapper.readValue(json, companionClassType)
 }
 
@@ -61,11 +61,11 @@ trait CompanionJson[T] extends Json {
  * we get the object type and not the class type. This is some kind of unattractive
  */
 object Address extends CompanionJson[Address] {
-  val companionClassType: Class[Address] = Address("", "").getClass.asInstanceOf[Class[Address]]
+  val companionClassType: Class[_ <: Address] = Address("", "").getClass
 }
 
 object Person2 extends CompanionJson[Person2] {
-  val companionClassType: Class[Person2] = Person2("", "", None).getClass.asInstanceOf[Class[Person2]]
+  val companionClassType: Class[_ <: Person2] = Person2("", "", None).getClass
 }
 
 object JsonTraitCompanionMixin extends App {
