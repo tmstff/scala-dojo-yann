@@ -1,4 +1,4 @@
-package section6
+package section7
 
 import javax.swing.{JPanel, JButton, JFrame}
 import java.awt.event.{ActionEvent, ActionListener, WindowEvent, WindowAdapter}

@@ -1,6 +1,6 @@
-package section10
+package section11
 
-object Section10 {
+object Section11 {
   val text =
     """Scala (/ˈskɑːlə/ skah-lə) is an object-functional programming and scripting language for general software applications,
       |statically typed, designed to concisely express solutions in an elegant,[6] type-safe and lightweight (low ceremonial) manner.
