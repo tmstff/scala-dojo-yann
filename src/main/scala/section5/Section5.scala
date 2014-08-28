@@ -1,10 +1,5 @@
 package section5
 
-import com.fasterxml.jackson.annotation.{PropertyAccessor, JsonIgnore}
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.module.scala.DefaultScalaModule
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility
-
 object Section5 {
 
   class Cigarettes
