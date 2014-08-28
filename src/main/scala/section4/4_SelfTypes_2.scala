@@ -11,13 +11,13 @@ package selfTypes2 {
    */
   case class Passenger(hasTicket: Boolean)
   class Train(var passengers: List[Passenger]) {
-    this: Conductor =>
+    this: TrainGuard =>
   }
 
   /**
    * Now we define a conductor hierarchy
    */
-  trait Conductor {
+  trait TrainGuard {
     def findFareDodgers: Int
   }
 
@@ -25,7 +25,7 @@ package selfTypes2 {
    * We have a hard working conductor. He controls every passenger.
    * Therefore he needs access to the train and therefore its passengers
    */
-  trait HardWorkingConductor extends Conductor {
+  trait HardWorkingGuard extends TrainGuard {
     this: Train =>
     def findFareDodgers: Int = passengers.count(p => !p.hasTicket)
   }
@@ -34,7 +34,7 @@ package selfTypes2 {
    * Also we have a lazy conductor. He will always sit in his
    * conductor office and reports 0 daredodgers. He does not really need a train
    */
-  trait LazyConductor extends Conductor {
+  trait LazyGuard extends TrainGuard {
     def findFareDodgers: Int = 0
   }
 
@@ -45,7 +45,10 @@ package selfTypes2 {
     val passengers = List(Passenger(true), Passenger(false), Passenger(true), Passenger(false))
 
     //val willNotCompileTrain = new Train(passengers)
-    val train1 = new Train(passengers) with LazyConductor
-    val train2 = new Train(passengers) with HardWorkingConductor
+    val train1 = new Train(passengers) with LazyGuard
+    val train2 = new Train(passengers) with HardWorkingGuard
+
+    println(train1.findFareDodgers)
+    println(train2.findFareDodgers)
   }
 }

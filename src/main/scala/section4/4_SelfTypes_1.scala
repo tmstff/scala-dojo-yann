@@ -20,7 +20,7 @@ package selfTypes {
    *
    * This self type defines, that a conductor instance always must be or must mixed in in a CapitalismTrain
    */
-  trait Conductor {
+  trait TrainGuard {
     this: CapitalismTrain =>
     // A conductor can only control a capitalismTrain
     def findFareDodgers: Int = passengers.count(p => !p.hasTicket)
@@ -29,7 +29,7 @@ package selfTypes {
   object SelfType extends App {
     val passengers = List(Passenger(true), Passenger(false), Passenger(true), Passenger(false))
 
-    val capitalismTrain = new CapitalismTrain(passengers) with Conductor
+    val capitalismTrain = new CapitalismTrain(passengers) with TrainGuard
     println(capitalismTrain.findFareDodgers)
 
     /*
