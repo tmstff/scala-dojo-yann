@@ -22,9 +22,4 @@ object Section4 {
 
   // Returns a new Book object
   def getABook(title: String, pages: Int): Book = ???
-
-  // Returns a new House object
-  def getAHouse(rooms: Int, floors: Int, street: String): House = ???
-
-
 }
