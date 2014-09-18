@@ -26,8 +26,8 @@ public class BillCalculator {
     }
 
     // Let's make in more in a return early style.
-    // Pfuh... Many ifs. Many braces. 13 lines of
-    // code only this stuff can be null!?
+    // Pfuh... Many ifs. Many braces. 12 lines of
+    // code only because this stuff can be null!?
     public int calculateBillForUser_2(User user) {
         if (user == null) {
             return 0;

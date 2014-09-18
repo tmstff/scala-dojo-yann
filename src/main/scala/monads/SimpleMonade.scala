@@ -5,12 +5,15 @@ object MonadeExample extends App {
   val elem: Int = 4711
   val monade: SimpleMonade[Int] = new SimpleMonade[Int](elem)
 
-  val x: PartialFunction[Int, String] = { case 1 => "hallo" }
 
-  println(x.isDefinedAt(2))
 
-  val y = Some("")
-  println(y.flatMap(str => Some(str)))
+  val strMonade = new SimpleMonade("hallo")
+
+  val strValue = strMonade
+    .flatMap(str => new SimpleMonade(str + " Welt"))
+    .flatMap(str => new SimpleMonade(str.toUpperCase))
+
+  println(strValue.element)
 }
 /**
  * We have a class which encapsulate
@@ -18,7 +21,7 @@ object MonadeExample extends App {
  * with a value constructor. In our example it's simple
  * the class constructor
  */
-class SimpleMonade[T](element: T) {
+class SimpleMonade[T](val element: T) {
 
   /**
    * flatMap defines a binding method which only changes the internal typ
