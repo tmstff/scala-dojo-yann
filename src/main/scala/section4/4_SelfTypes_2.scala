@@ -15,14 +15,14 @@ package selfTypes2 {
   }
 
   /**
-   * Now we define a conductor hierarchy
+   * Now we define a train guard hierarchy
    */
   trait TrainGuard {
     def findFareDodgers: Int
   }
 
   /**
-   * We have a hard working conductor. He controls every passenger.
+   * We have a hard working train guard. He controls every passenger.
    * Therefore he needs access to the train and therefore its passengers
    */
   trait HardWorkingGuard extends TrainGuard {

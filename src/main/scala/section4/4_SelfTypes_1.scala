@@ -14,8 +14,8 @@ package selfTypes {
   class SocialismTrain(passengers: List[Passenger]) extends Train(passengers)
 
   /**
-   * We also define a conductor, which will control if the passengers have tickets.
-   * But in a socialism train there should be free ride should for the masses. So
+   * We also define a trainguard, which will control if the passengers have tickets.
+   * But in a socialism train there should be free rides for the masses!!! So
    * the conductor should only be allowed to control in a capitalism train.
    *
    * This self type defines, that a conductor instance always must be or must mixed in in a CapitalismTrain
@@ -34,7 +34,7 @@ package selfTypes {
 
     /*
      * WILL NOT COMPILE
-    val socialismTrain = new SocialismTrain(passengers) with Conductor
+    val socialismTrain = new SocialismTrain(passengers) with TrainGuard
     println(socialismTrain.findFareDodgers)
     */
   }
