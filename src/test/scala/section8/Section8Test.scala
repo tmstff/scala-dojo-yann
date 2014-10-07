@@ -1,13 +1,13 @@
-package section7
+package section8
 
 import org.scalatest.{Matchers, GivenWhenThen, FeatureSpec}
-import section7.Section7._
+import section8.Section8._
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class Section7Test extends FeatureSpec with GivenWhenThen with Matchers {
+class Section8Test extends FeatureSpec with GivenWhenThen with Matchers {
 
   info("As father alone today with my kids")
   info("I want to cook spaghetti bolognese")
