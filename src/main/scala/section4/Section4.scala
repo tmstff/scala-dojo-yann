@@ -19,7 +19,7 @@ object Section4 {
   }
 
   case class Book(title: String, pages: Int)
-  case class House(rooms: Int, floors: Int, street: String)
+  case class House(rooms: Int, floors: Int, street: String) extends JsonConvertible
 
   trait BookFactory {
     def getABook(title: String, pages: Int): Book
@@ -61,4 +61,8 @@ object Section4 {
 
     def actualEarnings = earnings
   }
+
+  // Returns a new Book object
+  def getABook(title: String, pages: Int): Book = new Book(title, pages) with JsonConvertible
+
 }
