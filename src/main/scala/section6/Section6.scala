@@ -15,20 +15,22 @@ object Section6 {
    *         Success[URL] when the url is valid
    *         Failure[Throwable] when the url is not valid
    */
-  def parseURL(url: String): Try[URL] = ???
+  def parseURL(url: String): Try[URL] = Try(new URL(url))
 
 
   /**
    * uses the URL parsed from the user input
    * If the user input is not a valid URL, use 'http://duckduckgo.com' instead
    */
-  def defaultSearchEngine(userInput: String): URL = ???
+  def defaultSearchEngine(userInput: String): URL = parseURL(userInput).recoverWith {
+    case _ : Throwable => parseURL("http://duckduckgo.com")
+  }.get
 
 
   /**
    * @return the protocol ('http', 'ftp'...) of the URL if valid
    */
-  def getProtocol(url: String): Try[String] = ???
+  def getProtocol(url: String): Try[String] = parseURL(url).map(_.getProtocol)
 
 
   /**
@@ -39,7 +41,10 @@ object Section6 {
    * @param url url to read the content from
    * @param output to write the read lines from website
    */
-  def readURLContent(url: String, output: ByteArrayOutputStream) = ???
+  def readURLContent(url: String, output: ByteArrayOutputStream) = getURLContent(url) match {
+    case Success(iter) => iter.foreach(string => output.write(string.getBytes))
+    case Failure(e)    => output.write(s"Problem rendering URL content: ${e.getMessage}".getBytes)
+  }
 
 
   /**
