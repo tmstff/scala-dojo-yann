@@ -1,9 +1,11 @@
+package section6
+
 import scala.util.{Try, Success, Failure}
 
 /**
  * If you like it more function the scala library has a Try class like Option.
  */
-object Exceptions_3 extends App {
+object TheTryObject extends App {
 
   // The statement (x/y) can throw an ArithmeticException.
   // So we encapsulate this statement into an Try object.
