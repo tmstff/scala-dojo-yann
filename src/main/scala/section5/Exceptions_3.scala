@@ -21,7 +21,7 @@ object Exceptions_3 extends App {
     .map(println)
 
   // As every monadic structure, also Try can be used in for-comprehensions
-  // This method, combines three 'divide' calls returns to one Try object.
+  // This method, combines three 'divide' returns to one Try object.
   val result: Try[Double] = for {
     x <- divide(4, 2)
     y <- divide(9, 3)
