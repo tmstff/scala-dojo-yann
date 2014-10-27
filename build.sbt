@@ -4,7 +4,7 @@ version := "0.1.0-SNAPSHOT"
 
 organization := "com.yanns"
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.3"
 
 scalacOptions ++= Seq("-Xmax-classfile-name", "128", "-deprecation","-unchecked")
 
