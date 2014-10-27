@@ -13,8 +13,8 @@ class Section4Test extends FunSuite with Matchers with CustomMatcher {
     nativeBook shouldNot be a jsonConvertible
   }
 
-  test("a custom book from getABook should be convertible to the json notation") {
-    val book: Book = getABook("Programming in Scala", 852)
+  test("a custom book from the json convertible book factory should be convertible to the json notation") {
+    val book: Book = new JsonConvertibleBookFactory().getABook("Programming in Scala", 852)
 
     book shouldBe a [Book]
     book shouldBe a [JsonConvertible]
@@ -35,6 +35,16 @@ class Section4Test extends FunSuite with Matchers with CustomMatcher {
     // We also can call house.toJson
     val jsonable: JsonConvertible = house.asInstanceOf[JsonConvertible]
     jsonable.toJson shouldBe """{"rooms":4,"floors":2,"street":"Fakestreet"}"""
+  }
+
+  test("BookStore should calculate a correct earning") {
+    // Hint: Actually, the earnings are calculated randomly.
+    // Try to refactor the implementation and use an injected test mock.
+    val bookStore = new BookStore
+    bookStore.buyABook("Book1")
+    bookStore.buyABook("Book2")
+
+    bookStore.actualEarnings shouldBe 40
   }
 }
 
