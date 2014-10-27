@@ -26,7 +26,7 @@ object Section4 {
   }
 
   class JsonConvertibleBookFactory extends BookFactory {
-    def getABook(title: String, pages: Int): Book = ???
+    def getABook(title: String, pages: Int): Book = new Book(title, pages) with JsonConvertible
   }
 
   class BookCatalogue {
