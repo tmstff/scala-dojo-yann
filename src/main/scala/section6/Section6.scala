@@ -53,7 +53,10 @@ object Section6 {
    * In case of FileNotFoundException, delivers one line "Requested page does not exist"
    * In case of MalformedURLException, delivers one line "Please make sure to enter a valid URL"
    */
-  def getURLContentWithErrorMessage(url: String): Try[Iterator[String]] = ???
+  def getURLContentWithErrorMessage(url: String): Try[Iterator[String]] = getURLContent(url).recoverWith{
+    case foe: FileNotFoundException => Success(Iterator("Requested page does not exist"))
+    case mue: MalformedURLException => Success(Iterator("Please make sure to enter a valid URL"))
+  }
 
   /**
    * @param url webpage to read
