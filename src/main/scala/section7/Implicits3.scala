@@ -1,4 +1,4 @@
-package section6
+package section7
 
 /**
  * Implicit parameters

@@ -1,3 +1,5 @@
+package section7
+
 object Implicits2 extends App {
 
   /**

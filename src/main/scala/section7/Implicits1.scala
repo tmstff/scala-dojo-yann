@@ -1,3 +1,5 @@
+package section7
+
 object Implicits1 extends App {
   // Simple example
   // We have an plain java integer
