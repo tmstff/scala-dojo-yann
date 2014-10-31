@@ -7,6 +7,12 @@ object ClickMeApplication extends App {
 
   // TODO: implement an implicit conversion so that
   // the commented code can compile and work as expected
+  implicit def convert(listener: (ActionEvent) => Unit): ActionListener = {
+    new ActionListener {
+      def actionPerformed(p1: ActionEvent) = listener(p1)
+    }
+  }
+
 
   new JFrame("click Me!") {
     val exitListener = new WindowAdapter {
@@ -23,9 +29,9 @@ object ClickMeApplication extends App {
       }
     })
     // to un-comment
-//    button.addActionListener { event: ActionEvent =>
-//      println("button clicked in a scala way")
-//    }
+    button.addActionListener { event: ActionEvent =>
+      println("button clicked in a scala way")
+    }
 
     val panel = new JPanel()
     panel.add(button)
