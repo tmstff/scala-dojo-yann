@@ -1,9 +1,11 @@
 package section8
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{Await, Future}
 import scala.concurrent.duration.DurationInt
 import scala.util.Random
+
+// Node, that we import this implicit execution context!
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object Futures1 extends App {
   /**
