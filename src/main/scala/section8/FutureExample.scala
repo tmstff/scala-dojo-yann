@@ -6,7 +6,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import sun.misc.BASE64Encoder
 import java.io.InputStreamReader
 
-object Example extends App {
+object FutureExample extends App {
 
   /**
    * This method returns a future of a character stream
