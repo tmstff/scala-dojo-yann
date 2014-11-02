@@ -26,7 +26,7 @@ try {
 // By the way:
 // The case block is just a partial function.
 // So, we can reuse a generic catch block
-val exceptionHandler = PartialFunction[Throwable, Unit] {
+val exceptionHandler: PartialFunction[Throwable, Unit] = {
   case e : IllegalArgumentException => println("foobar!")
 }
 
