@@ -1,7 +1,11 @@
 package monads.motivation;
 
 public class Contract {
-    private Tariff tariff;
+    private final Tariff tariff;
+
+    public Contract(Tariff tariff) {
+        this.tariff = tariff;
+    }
 
     public Tariff getTariff() {
         return tariff;

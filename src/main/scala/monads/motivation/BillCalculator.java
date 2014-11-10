@@ -9,9 +9,9 @@ public class BillCalculator {
     }
 
     // Let's check all the objects in out getter chain
-    // Hmmm... Looks familiar in our java world
-    // but weird and boiler plated
-    public int calculateBillForUser_3(User user) {
+    // Hmmm... Looks familiar in our java world.
+    // But isn't it weird and boiler plated?
+    public int calculateBillForUser_2(User user) {
         if(user != null) {
             Contract contract = user.getContract();
             if(contract != null) {
@@ -28,7 +28,7 @@ public class BillCalculator {
     // Let's make in more in a return early style.
     // Pfuh... Many ifs. Many braces. 12 lines of
     // code only because this stuff can be null!?
-    public int calculateBillForUser_2(User user) {
+    public int calculateBillForUser_3(User user) {
         if (user == null) {
             return 0;
         }
