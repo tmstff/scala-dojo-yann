@@ -42,5 +42,17 @@ object Section8 {
     "spaghetti bolognese ready"
   }
 
-  def prepareSpaghettiBolognese(pasta: Pasta, water: Water, ingredients: String*): Future[SpaghettiBolognese] = ???
+  def prepareSpaghettiBolognese(pasta: Pasta, water: Water, ingredients: String*): Future[SpaghettiBolognese] = {
+    val futureWater = boilWater(water)
+    val futureSauce = prepareSauce(ingredients: _*)
+
+    for {
+      boiledWater <- futureWater
+      sauce <- futureSauce
+      boiledPasta <- cookPasta(pasta, boiledWater)
+      spaghettiBolognese <- mixPastaAndSauce(boiledPasta, sauce)
+    } yield {
+      spaghettiBolognese
+    }
+  }
 }
