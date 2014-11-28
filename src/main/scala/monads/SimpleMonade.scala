@@ -6,14 +6,11 @@ object MonadeExample extends App {
   val monade: SimpleMonade[Int] = new SimpleMonade[Int](elem)
 
 
+  val strMonade = monade.map(_.toString)
+    .map(str => str + " Welt")
+    .map(str => str.toUpperCase)
 
-  val strMonade = new SimpleMonade("hallo")
-
-  val strValue = strMonade
-    .flatMap(str => new SimpleMonade(str + " Welt"))
-    .flatMap(str => new SimpleMonade(str.toUpperCase))
-
-  println(strValue.element)
+  println(strMonade.element)
 }
 /**
  * We have a class which encapsulate
