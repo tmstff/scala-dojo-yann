@@ -44,13 +44,22 @@ object Section4 {
     def getBook(title: String) = catalogue(title)
   }
 
-  class PriceResolver {
+  trait PriceResolver {
+    def getPrice(book: Book): Int
+  }
+
+  object RandomPriceResolver extends PriceResolver {
     def getPrice(book: Book): Int = Random.nextInt % 30
   }
 
-  class BookStore {
+  trait PriceResolverService {
+    val priceResolver: PriceResolver
+  }
+
+  trait BookStore {
+    self: PriceResolverService =>
+
     private val bookCatalogue: BookCatalogue = new BookCatalogue
-    private val priceResolver: PriceResolver = new PriceResolver
     private var earnings: Int = 0
 
     def buyABook(title: String): Book = {

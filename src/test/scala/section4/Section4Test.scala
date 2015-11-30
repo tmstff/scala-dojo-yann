@@ -48,7 +48,12 @@ class Section4Test extends FunSuite with Matchers with CustomMatcher {
   test("BookStore should calculate a correct earning") {
     // Hint: Actually, the earnings are calculated randomly.
     // Try to refactor the implementation and use an injected test mock.
-    val bookStore = new BookStore
+    val bookStore = new BookStore with PriceResolverService {
+      override val priceResolver: PriceResolver = new PriceResolver {
+        override def getPrice(book: Book): Int = 20
+      }
+    }
+
     bookStore.buyABook("Book1")
     bookStore.buyABook("Book2")
 
