@@ -1,4 +1,4 @@
-package monads.motivation;
+package specials.monads.motivation;
 
 @SuppressWarnings("unused")
 public class BillCalculator {

@@ -1,4 +1,4 @@
-package monads
+package specials.monads
 
 object MonadeExample extends App {
 

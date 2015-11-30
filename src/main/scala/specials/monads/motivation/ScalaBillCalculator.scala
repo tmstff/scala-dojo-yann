@@ -1,4 +1,4 @@
-package monads.motivation
+package specials.monads.motivation
 
 
 object ScalaBillCalculator {
