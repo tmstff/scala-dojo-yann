@@ -23,9 +23,9 @@ object Section1 {
     result
   }
 
-  def newConst(x: Int, y: Int) = x
+  def newConst(x: Int, y: => Int) = x
 
   // Return a function which takes one parameter and multiply it with the 'x' value
-  def someIntFunction(x: Int): (Int => Int) = ???
+  def someIntFunction(x: Int): (Int => Int) = (y:Int) => x * y
 
 }
