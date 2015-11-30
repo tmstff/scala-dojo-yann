@@ -3,7 +3,7 @@ package monads
 object MonadeExample extends App {
 
   val elem: Int = 4711
-  val monade: SimpleMonade[Int] = new SimpleMonade[Int](elem)
+  val monade: SimpleMonade[Int] = SimpleMonade(elem)
 
 
   val strMonade = monade.map(_.toString)
@@ -43,4 +43,11 @@ class SimpleMonade[T](val element: T) {
    * if the element has a specific state. Like Option with its Some and None.
    */
   def flatMap[B](f: T => SimpleMonade[B]): SimpleMonade[B] = f(element)
+}
+
+/**
+ * Constructor object
+ */
+object SimpleMonade {
+  def apply[T](elem: T): SimpleMonade[T] = new SimpleMonade(elem)
 }
