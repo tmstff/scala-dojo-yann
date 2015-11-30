@@ -13,11 +13,15 @@ class Section4Test extends FunSuite with Matchers with CustomMatcher {
     nativeBook shouldNot be a jsonConvertible
   }
 
-  test("a custom book from getABook should be convertible to the json notation") {
-    val book: Book = getABook("Programming in Scala", 852)
+  test("a custom book from the json convertible book factory should be also a jsonConvertible") {
+    val book: Book = new JsonConvertibleBookFactory().getABook("Programming in Scala", 852)
 
     book shouldBe a [Book]
     book shouldBe a [JsonConvertible]
+  }
+
+  test("a custom book from the json convertible book factory should be convertible to the json notation") {
+    val book: Book = new JsonConvertibleBookFactory().getABook("Programming in Scala", 852)
 
     // Only to make the tests compilable without implementation.
     // We also can call house.toJson
@@ -25,16 +29,30 @@ class Section4Test extends FunSuite with Matchers with CustomMatcher {
     jsonable.toJson shouldBe """{"title":"Programming in Scala","pages":852}"""
   }
 
-  test("a custom house should be directly convertible to the json notation on instantiation") {
+  test("a native house object should be also a JsonConvertible") {
     val house: House = House(4, 2, "Fakestreet")
 
     house shouldBe a [House]
     house shouldBe a [JsonConvertible]
+  }
+
+  test("a native house object should be directly convertible to the json notation on instantiation") {
+    val house: House = House(4, 2, "Fakestreet")
 
     // Only to make the tests compilable without implementation.
     // We also can call house.toJson
     val jsonable: JsonConvertible = house.asInstanceOf[JsonConvertible]
     jsonable.toJson shouldBe """{"rooms":4,"floors":2,"street":"Fakestreet"}"""
+  }
+
+  test("BookStore should calculate a correct earning") {
+    // Hint: Actually, the earnings are calculated randomly.
+    // Try to refactor the implementation and use an injected test mock.
+    val bookStore = new BookStore
+    bookStore.buyABook("Book1")
+    bookStore.buyABook("Book2")
+
+    bookStore.actualEarnings shouldBe 40
   }
 }
 
