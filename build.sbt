@@ -30,7 +30,7 @@ resolvers ++= Seq("snapshots" at "http://oss.sonatype.org/content/repositories/s
                   "releases"  at "http://oss.sonatype.org/content/repositories/releases")
 
 lazy val macros = project
-  .settings(scalaVersion := "2.11.1")
+  .settings(scalaVersion := "2.11.7")
   .settings(libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value)
 
 lazy val root =
