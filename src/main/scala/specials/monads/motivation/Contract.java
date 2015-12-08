@@ -1,4 +1,4 @@
-package monads.motivation;
+package specials.monads.motivation;
 
 public class Contract {
     private final Tariff tariff;

@@ -1,4 +1,4 @@
-package monads.motivation;
+package specials.monads.motivation;
 
 public class User {
     private final Contract contract;

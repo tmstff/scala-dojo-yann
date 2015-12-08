@@ -1,4 +1,4 @@
-package monads
+package specials.monads
 
 object EitherExample extends App {
   println(sumSomething(6, 7))

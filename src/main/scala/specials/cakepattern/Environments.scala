@@ -1,4 +1,4 @@
-package cakepattern
+package specials.cakepattern
 
 import scala.Predef._
 

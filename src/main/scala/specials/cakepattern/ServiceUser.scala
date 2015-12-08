@@ -1,4 +1,4 @@
-package cakepattern
+package specials.cakepattern
 
 class ServiceUser {
   this: AAServiceComponent with BBServiceComponent =>

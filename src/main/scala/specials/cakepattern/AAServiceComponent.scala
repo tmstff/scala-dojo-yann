@@ -1,4 +1,4 @@
-package cakepattern
+package specials.cakepattern
 
 trait AAService {
   def callService(x: String)
