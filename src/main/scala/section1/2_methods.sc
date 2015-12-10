@@ -89,11 +89,19 @@ someCallByName({
 
 //
 // Is call by reference and reference manipulation possible?
-var x = List(1, 2, 3)
-def tryOfCallbyReference(param: List[Int]) {
-  // param = List(1, 2, 3, 4) Error: Reassignment to val
+import scala.collection.mutable.ListBuffer
 
-  // The params value is a reference on x,
-  // but since all params are vals there is no reference manipulation!
+def tryOfCallByReference(param: ListBuffer[Int]) {
+  // The params value is a reference on x but a val. We cannot reassign it.
+  // param = ListBuffer(1, 2, 3, 4) Error: Reassignment to val
+
+  // As param is a mutable List, we can manipulate the internal state:
+  param += 4
 }
+
+// Before the method call we have a list of '1, 2, 3'
+// After the call the list contains '1, 2, 3, 4'
+var x = ListBuffer(1, 2, 3)
+tryOfCallByReference(x)
+x
 
