@@ -1,0 +1,50 @@
+Lightningtalk:
+ - Scala Features
+
+Day 1 - "The Basics": (ggf. 3h)
+ - Introduction
+ - Feature set
+ - Principles                               (1 hour)
+ - Setup the IDE and project (SBT)          (15 minutes)
+
+ Section1:
+ - Variables
+ - Methods
+ - Functions
+
+Day 2 - "Getting into the flow":
+ - conditional statements
+ - for comprehension
+ - Collections and their API
+
+Day 3 - "Do it with objects"
+ - Classes / Objects
+ - Case classes
+ - Abstract classes
+ - Traits
+
+Day 4 - "Fun with polymorphism"
+ - Type Hierarchy
+ - SelfTypes
+ - Cake pattern
+
+Day 5 - "Pattern matching"
+ - Option/Try
+ - pattern matching
+ - exceptions
+ - partial functions
+
+Day 6 - "The great concurrent"
+ - Futures
+ - Promises
+ - implicits
+
+Day 7 - "Example service A":
+ - Setup
+ - Controller
+ - Json handling
+
+Day 8 - "Example service B":
+ - Controller
+ - Database
+ - Putting it all together
