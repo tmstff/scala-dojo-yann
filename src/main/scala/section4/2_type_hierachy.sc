@@ -49,6 +49,8 @@ def divide(x: Int, y: Int): Int =
   if(y != 0) x / y
   else error("Can not divide by zero!") // <- We "return" a Nothing and therefore can us it as a return type of the Int method.
 
+divide(3, 0)
+
 // A practical example is the None subtype of Option.
 val x: Option[Nothing] = None
 /*
