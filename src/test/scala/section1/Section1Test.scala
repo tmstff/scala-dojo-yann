@@ -23,7 +23,7 @@ class Section1Test extends FunSuite {
     assert(Section1.expr() === "xzyz")
   }
 
-  test("'newConst' function using call by name can be called with function 'exception'") {
+  test("'newConst' function should use Call-By-Name and can be called with function 'exception'") {
     assert(Section1.newConst(2, Section1.exception) === 2)
     assert(Section1.newConst(4, Section1.exception) === 4)
   }
@@ -31,6 +31,8 @@ class Section1Test extends FunSuite {
   test("A 'someIntFunction' function returns a new function which will multiply its parameter with the first parameter of 'someIntFunction'") {
     val function = Section1.someIntFunction(3)
     assert(function(4) === 12)
+
+    // Somewhere this should happen: 3 * 4
   }
 
 }
