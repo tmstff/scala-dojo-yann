@@ -1,4 +1,4 @@
-package cakepattern
+package specials.cakepattern
 
 object Main extends App {
   val user = new ServiceUser with RuntimeEnvironment

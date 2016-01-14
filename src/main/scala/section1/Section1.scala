@@ -1,9 +1,6 @@
 package section1
 
 object Section1 {
-  def exception: Int = throw new RuntimeException
-  def constOne(x: Int, y: Int) = 1
-
   // implement the ???
   // and change if necessary the 'def' with 'val', 'var' or 'lazy val'
   def message: String = ???
@@ -12,14 +9,18 @@ object Section1 {
 
   def expr(): String = {
     var result = ""
-    // change if necessary the 'def' with 'val', 'var' or 'lazy val'
-    def x = { result += "x"; 1 }
-    def y = { result += "y"; 2 }
-    def z = { result += "z"; 3 }
+    // change the 'def' with 'val', 'var' or 'lazy val' or let it stay a 'def'
+    // Ask yourself, when which block is executed.
+    def x: Int = { result += "x"; 1 }
+    def y: Int = { result += "y"; 2 }
+    def z: Int = { result += "z"; 3 }
+
+    // Do not edit this line. ;-)
     z + y + x + z + y + x
     result
   }
 
+  def exception: Int = throw new RuntimeException
   def newConst(x: Int, y: Int) = x
 
   // Return a function which takes one parameter and multiply it with the 'x' value

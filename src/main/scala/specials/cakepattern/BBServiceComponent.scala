@@ -1,4 +1,4 @@
-package cakepattern
+package specials.cakepattern
 
 trait BBService {
   def callService(y: String)
