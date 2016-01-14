@@ -18,9 +18,10 @@ ref.checksum
 // With the 'var' prefix, the variable is public
 class ConstructorClass(private val x: Int, var y: Int, val z: Int = 20) {
 
-  // All statements are executed while constructing
+  // All statements between the class braces are executed while constructing.
   println(s"Value $x set as value")
 
+  // We can define another typed constructor
   def this(x: String, y: String) {
     this(x.toInt, y.toInt, 10)
   }
@@ -37,11 +38,14 @@ val ref3 = new ConstructorClass(1, 2, 3)
 // false... You have to override equals like in java
 ref2 == ref3
 
+// Call the public method
 ref2.sum
 
+// Override the public mutable field 'y'
 ref2.y = 10
 ref2.sum
 
+// Access the immutable public field 'z'
 ref2.z
 
 
@@ -50,7 +54,7 @@ ref2.z
 object ThisIsAStaticObject {
   var someField = 42
 
-  def printField = println(s"This is the field: ${someField}.")
+  def printField = println(s"This is the field: $someField.")
 }
 
 
