@@ -16,11 +16,21 @@ ref.checksum
 
 // Class with constructor arguments
 // With the 'var' prefix, the variable is public
-class ConstructorClass(private val x: Int, var y: Int, val z: Int) {
+class ConstructorClass(private val x: Int, var y: Int, val z: Int = 20) {
+
   // All statements are executed while constructing
   println(s"Value $x set as value")
+
+  def this(x: String, y: String) {
+    this(x.toInt, y.toInt, 10)
+  }
+
   def sum = x+y+z
 }
+
+new ConstructorClass(1, 2)
+new ConstructorClass("1", "2")
+
 val ref2 = new ConstructorClass(1, 2, 3)
 val ref3 = new ConstructorClass(1, 2, 3)
 
