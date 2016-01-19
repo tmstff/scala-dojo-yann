@@ -58,7 +58,7 @@ E match {
 }
 
 /****
- * Constructor pattern
+ * Constructor pattern with case classes
  */
 abstract class Gender
 object Male extends Gender
