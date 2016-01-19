@@ -13,7 +13,7 @@ ref.checksum
 ref.add(10)
 ref.checksum
 
-
+// ------------------------------
 // Class with constructor arguments
 // With the 'var' prefix, the variable is public
 class ConstructorClass(private val x: Int, var y: Int, val z: Int = 20) {
@@ -48,6 +48,30 @@ ref2.sum
 // Access the immutable public field 'z'
 ref2.z
 
+
+// ---------------------------
+// Access definitions
+class Car() {
+  // Only accessible from within the this scope
+  private[this] def isOnTestBench(): Boolean = {
+    println("Shutting down turbo boost. Switching to lame duck mode.")
+    true
+  }
+
+  // Private is class private but not object private
+  private def initAirbags {
+    println("PUFFF!")
+  }
+
+  def startEngine(): Unit = {
+    println("Starting engine")
+    isOnTestBench()
+  }
+
+  def crashWith(other: Car) {
+    other.initAirbags
+  }
+}
 
 // Objects are static elements in scala.
 // Like java classes with static fields and methods
