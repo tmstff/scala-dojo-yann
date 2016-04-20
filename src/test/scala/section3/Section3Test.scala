@@ -1,6 +1,8 @@
 package section3
 
 import org.scalatest.FunSuite
+import section3.Section3.UserRepository.{female, findAll, findById, male}
+import section3.Section3._
 
 class Section3Test extends FunSuite {
 
@@ -38,6 +40,35 @@ class Section3Test extends FunSuite {
 
   test("female user with age >= 18 is allowed") {
     assert(Section3.isUserAllowed(5) === true)
+  }
+
+  test("one can write method calls in reversed order") {
+    val dog: Dog = new Dog()
+    val cat: Cat = new Cat("Kitty")
+    // a dog can not be barked at by a cat - change method barkAt (and method call) in such a way that
+    // the written order of the arguments and the method call makes sense (Hint: section 3, slide 3)
+    // i.e. the dog barks at the cat
+    assert((cat barkAt dog) === "Kitty-cat is barked at by a dog")
+  }
+
+  test("we can find matching adult couples - in a 'traditional' way") {
+    // sort males and females by age. Couple first male with first female etc.
+    // gender and age has to be present, age has to be >= 18
+    assert(
+      TraditionalDatingAgency.computeMatches( findAll.toList ) ===
+        (findById(1).get, findById(5).get) ::
+        (findById(6).get, findById(7).get) :: Nil
+    )
+  }
+
+  test("we can find matching adult couples - the 'Cologne' way") {
+    // all users are sorted by age. Genders are ignores. Couple first with second, then third with fourth and so on.
+    // age has to be present, age has to be >= 18
+    assert(
+      CologneDatingAgency.computeMatches( findAll.toList ) ===
+        (findById(5).get, findById(2).get) ::
+        (findById(1).get, findById(6).get) :: Nil
+    )
   }
 
 }
