@@ -62,7 +62,7 @@ class Section3Test extends FunSuite {
   }
 
   test("we can find matching adult couples - the 'Cologne' way") {
-    // all users are sorted by age. Genders are ignores. Couple first with second, then third with fourth and so on.
+    // Sort users by age. Ignore genders. Couple first with second, then third with fourth and so on.
     // age has to be present, age has to be >= 18
     assert(
       CologneDatingAgency.computeMatches( findAll.toList ) ===
