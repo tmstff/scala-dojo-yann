@@ -51,6 +51,16 @@ class Section3Test extends FunSuite {
     assert((cat barkAt dog) === "Kitty-cat is barked at by a dog")
   }
 
+  test("compute avarage age of users") {
+    assert(Section3.UserRepository.computeAvarageAge() === 28)
+  }
+
+  test("concatenate nstring list") {
+    // reimplement mkString using reduce
+    val list = List("A", "B", "C")
+    assert(Section3.mkString(list, ",")=== list.mkString(","))
+  }
+
   test("we can find matching adult couples - in a 'traditional' way") {
     // sort males and females by age. Couple first male with first female etc.
     // gender and age has to be present, age has to be >= 18

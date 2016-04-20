@@ -21,6 +21,7 @@ object Section3 {
     gender: Option[String])
 
   object UserRepository {
+
     val male = Some("male")
     val female = Some("female")
 
@@ -37,6 +38,8 @@ object Section3 {
     def findById(id: Int): Option[User] = users.get(id)
 
     def findAll = users.values
+
+    def computeAvarageAge(users: Seq[User] = findAll.toSeq): Int = ???
   }
 
   object TraditionalDatingAgency {
@@ -44,6 +47,8 @@ object Section3 {
     def computeMatches(users: Seq[User]): Seq[(User, User)] = ???
 
   }
+
+  def mkString(list: List[String], sep: String): String = ???
 
   object CologneDatingAgency {
 
