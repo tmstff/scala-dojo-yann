@@ -1,4 +1,4 @@
-name := "scala-workshop"
+name := "scala-dojo-yann"
 
 version := "0.1.0-SNAPSHOT"
 
