@@ -5,7 +5,7 @@ import section4.Section4._
 import section4.Section4.Book
 import section4.Section4.House
 import org.scalatest.matchers.{BePropertyMatchResult, BePropertyMatcher}
-import section4.Section4.{Cigarettes, LaxistStore, NoIdException, Store, UnderAgeException, LaxistStore => _, _}
+import section4.Section4.{Cigarettes, LaxistStore, NoIdException, Store, UnderAgeException}
 
 class Section4Test extends FunSuite with Matchers with CustomMatcher {
 

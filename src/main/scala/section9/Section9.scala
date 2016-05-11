@@ -1,16 +1,18 @@
 package section9
 
 import akka.actor._
+
 import scala.concurrent.duration.DurationInt
 import scala.concurrent.ExecutionContext.Implicits.global
-import section8.Section8
 import akka.pattern.ask
 import akka.util.Timeout
+import section5.Section5
+import section5.Section5.Water
+
 import scala.concurrent.Await
-import section8.Section8.Water
 import scala.util.Random
 
-object Section10 extends App {
+object Section9 extends App {
 
   val system = ActorSystem("ItalianRestaurant")
   val italianRestaurant = system.actorOf(Props[ItalianRestaurant], "ItalianRestaurant")
@@ -74,8 +76,8 @@ class ItalianRestaurant extends Actor {
       println("I have to prepare some pasta for " + sender.path.name)
       val requestor = sender
       for {
-        water <- Section8.boilWater(Water(temperature = 25))
-        pasta <- Section8.cookPasta("pasta", water)
+        water <- Section5.boilWater(Water(temperature = 25))
+        pasta <- Section5.cookPasta("pasta", water)
       } {
         println("Here some pasta for " + requestor.path.name)
         requestor ! pasta
