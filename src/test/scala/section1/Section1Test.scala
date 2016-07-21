@@ -14,7 +14,7 @@ class Section1Test extends FunSuite {
   test("Section1 wants to be alone") {
     assert(Section1.greeting === "Hello, World")
     // First uncomment following line:
-    //Section1.greeting = "Leave me alone, world!"
+    Section1.greeting = "Leave me alone, world!"
     assert(Section1.greeting === "Leave me alone, world!")
   }
 
