@@ -1,6 +1,7 @@
 package section1
 
 import org.scalatest.FunSuite
+import section1.Section1.{stringOf, withFiles}
 
 class Section1Test extends FunSuite {
 
@@ -36,4 +37,28 @@ class Section1Test extends FunSuite {
     // Somewhere this should happen: 3 * 4
   }
 
+  test("read files with currying") {
+    // given
+    import scala.collection.mutable.ListBuffer
+    def filesContents = ListBuffer[String]()
+
+    writeFile( filePath = "/tmp/test1", content = "a" )
+    writeFile( filePath = "/tmp/test2", content = "b" )
+
+    // when
+    withFiles("/tmp/test1", "/tmp/test2") {
+      stream => filesContents += stringOf(stream)
+    }
+
+    // then
+    assert( filesContents(0) === "a" )
+    assert( filesContents(1) === "b" )
+  }
+
+  def writeFile(filePath: String, content: String) = {
+    import java.io._
+    val pw = new PrintWriter(new File( filePath ))
+    pw.write( content )
+    pw.close
+  }
 }

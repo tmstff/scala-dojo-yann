@@ -1,5 +1,7 @@
 package section1
 
+import java.io.InputStream
+
 object Section1 {
   // implement the ???
   // and change if necessary the 'def' with 'val', 'var' or 'lazy val'
@@ -25,4 +27,8 @@ object Section1 {
 
   // Return a function which takes one parameter and multiply it with the 'x' value
   def someIntFunction(x: Int): (Int => Int) = ???
+
+  def withFiles(fileNames: String*)(useInputStream: InputStream => Unit) : Unit = ???
+
+  def stringOf(is: InputStream) = scala.io.Source.fromInputStream(is).mkString
 }
