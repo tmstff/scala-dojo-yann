@@ -18,7 +18,7 @@ class Section5Test extends FeatureSpec with GivenWhenThen with Matchers {
   val atMost: Duration = 30.seconds
 
   feature("Cooking spaghetti bolognese") {
-    scenario("A featherbrained forget to boil water") {
+    scenario("A featherbrained forgot to boil water") {
       Given("water that is not hot enough")
       val water = Water(temperature = 25)
 
