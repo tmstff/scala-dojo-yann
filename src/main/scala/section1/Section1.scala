@@ -1,6 +1,6 @@
 package section1
 
-import java.io.InputStream
+import java.io.{FileInputStream, InputStream}
 
 object Section1 {
   // implement the ???
@@ -28,7 +28,18 @@ object Section1 {
   // Return a function which takes one parameter and multiply it with the 'x' value
   def someIntFunction(x: Int): (Int => Int) = ???
 
-  def withFiles(fileNames: String*)(useInputStream: InputStream => Unit) : Unit = ???
+  def withStream(is: InputStream)(useInputStream: InputStream => Unit): Unit =
+    try {
+      useInputStream(is)
+    } finally {
+      is.close()
+    }
 
-  def stringOf(is: InputStream) = scala.io.Source.fromInputStream(is).mkString
+  def withFiles(fileNames: String*)(useInputStream: InputStream => Unit) : Unit =
+    fileNames.foreach(
+      fileName => {
+        val is = new FileInputStream(fileName)
+        withStream(is)(useInputStream)
+      }
+    )
 }
