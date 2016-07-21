@@ -1,7 +1,9 @@
 package section1
 
+import java.io.InputStream
+
 import org.scalatest.FunSuite
-import section1.Section1.{stringOf, withFiles}
+import section1.Section1.withFiles
 
 class Section1Test extends FunSuite {
 
@@ -40,7 +42,7 @@ class Section1Test extends FunSuite {
   test("read files with currying") {
     // given
     import scala.collection.mutable.ListBuffer
-    def filesContents = ListBuffer[String]()
+    val filesContents = ListBuffer.empty[String]
 
     writeFile( filePath = "/tmp/test1", content = "a" )
     writeFile( filePath = "/tmp/test2", content = "b" )
@@ -61,4 +63,6 @@ class Section1Test extends FunSuite {
     pw.write( content )
     pw.close
   }
+
+  def stringOf(is: InputStream) = scala.io.Source.fromInputStream(is).mkString
 }
