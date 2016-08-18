@@ -14,14 +14,13 @@ object Section3 {
   }
 
   case class User(
-    id: Int,
-    firstName: String,
-    lastName: String,
-    age: Option[Int],
-    gender: Option[String])
+                   id: Int,
+                   firstName: String,
+                   lastName: String,
+                   age: Option[Int],
+                   gender: Option[String])
 
   object UserRepository {
-
     val male = Some("male")
     val female = Some("female")
 
@@ -39,24 +38,40 @@ object Section3 {
 
     def findAll = users.values
 
-    def computeAvarageAge(users: Seq[User] = findAll.toSeq): Int = ???
+    def computeAvarageAge(users: Seq[User] = findAll.toSeq): Int = {
+      val ages: Seq[Int] = users.flatMap(_.age)
+      ages.sum / ages.size
+    }
   }
 
   object TraditionalDatingAgency {
 
-    def computeMatches(users: Seq[User]): Seq[(User, User)] = ???
-
+    def computeMatches(users: List[User]): List[(User, User)] = {
+      val allowedUsers = users.
+        filter(user => user.age.exists(_ >= 18) && user.gender.isDefined).sortBy(_.age)
+      val maleUsers = allowedUsers.filter(_.gender == male)
+      val femaleUsers = allowedUsers.filter(_.gender == female)
+      maleUsers zip femaleUsers
+    }
   }
-
-  def mkString(list: List[String], sep: String): String = ???
 
   object CologneDatingAgency {
 
-    def computeMatches(users: Seq[User]): Seq[(User, User)] = ???
+    def computeMatches(users: List[User]): List[(User, User)] = {
+      val allowedUsers = users.filter(user => user.age.exists(_ >= 18)).sortBy(_.age)
+      val (evenUsers, oddUsers) =
+        allowedUsers.zipWithIndex.partition { case (user, index) => index % 2 == 0 }
+      evenUsers.unzip._1 zip oddUsers.unzip._1
+    }
   }
 
-  def isMale(id: Int): Boolean = ???
+  def mkString(list: List[String], sep: String): String = list.reduceLeft ( _ + sep + _ )
 
-  def isUserAllowed(id: Int): Boolean = ???
+  def isMale(id: Int): Boolean = UserRepository.findById(id).exists( _.gender exists (_ == "male") )
+
+  def isUserAllowed(id: Int): Boolean = UserRepository.findById(id)
+    .exists( u => u.gender == Some("female")
+      && u.age.exists(_ >= 18)
+    )
 
 }
