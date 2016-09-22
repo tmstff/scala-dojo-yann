@@ -1,6 +1,6 @@
 package section4
 
-import com.fasterxml.jackson.annotation.{PropertyAccessor, JsonIgnore}
+import com.fasterxml.jackson.annotation.{JsonIgnore, PropertyAccessor}
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility
@@ -19,14 +19,16 @@ object Section4 {
   }
 
   case class Book(title: String, pages: Int)
-  case class House(rooms: Int, floors: Int, street: String)
+  case class House(rooms: Int, floors: Int, street: String) extends JsonConvertible
 
   trait BookFactory {
     def getABook(title: String, pages: Int): Book
   }
 
+  class JsonConvertibleBook(t: String, p: Int) extends Book(t, p) with JsonConvertible
+
   class JsonConvertibleBookFactory extends BookFactory {
-    def getABook(title: String, pages: Int): Book = ???
+    def getABook(title: String, pages: Int): Book = new Book(title, pages) with JsonConvertible
   }
 
   class BookCatalogue {
@@ -48,9 +50,8 @@ object Section4 {
     def getPrice(book: Book): Int = Random.nextInt % 30
   }
 
-  class BookStore {
+  class BookStore(private val priceResolver: PriceResolver = new PriceResolver) {
     private val bookCatalogue: BookCatalogue = new BookCatalogue
-    private val priceResolver: PriceResolver = new PriceResolver
     private var earnings: Int = 0
 
     def buyABook(title: String): Book = {
@@ -62,21 +63,31 @@ object Section4 {
     def actualEarnings = earnings
   }
 
-
   class Cigarettes
   case class UnderAgeException(message: String) extends Exception(message)
   case class NoIdException(message: String) extends Exception(message)
 
   case class Customer(age: Int, haveId: Boolean = false) {
-    // hint: you can use the require function
+    require(age >= 0)
   }
 
   class Store {
-    def buyCigarettes(customer: Customer): Cigarettes = ???
+    @throws[UnderAgeException]
+    @throws[NoIdException]
+    def buyCigarettes(customer: Customer): Cigarettes = customer match {
+      case Customer(age, _) if age < 18 => throw new UnderAgeException(s"Customer must be older than 18 but was ${age}")
+      case Customer(_, false) => throw new NoIdException("Customer has no valid id")
+      case _ => new Cigarettes
+    }
   }
 
+
   class LaxistStore extends Store {
-    override def buyCigarettes(customer: Customer): Cigarettes = ???
+    @throws[UnderAgeException]
+    override def buyCigarettes(customer: Customer): Cigarettes = customer match {
+      case Customer(age, _) if age < 18 => throw new UnderAgeException(s"Customer must be older than 18 but was ${age}")
+      case _ => new Cigarettes
+    }
   }
 
 }
